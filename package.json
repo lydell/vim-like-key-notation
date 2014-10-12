@@ -1,0 +1,27 @@
+{
+  "name": "vim-like-key-notation",
+  "version": "0.1.0",
+  "author": "Simon Lydell",
+  "license": "MIT",
+  "description": "Parse and generate vim-like key notation for modern browsers.",
+  "main": "index.js",
+  "repository": "lydell/vim-like-key-notation",
+  "keywords": [
+    "vim",
+    "key",
+    "keyboard",
+    "notation",
+    "syntax",
+    "layout"
+  ],
+  "scripts": {
+    "lint": "jshint index.js test/*.js",
+    "unit": "mocha",
+    "test": "npm run lint && npm run unit"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.4",
+    "jshint": "^2.4.4",
+    "chai": "^1.9.2"
+  }
+}
