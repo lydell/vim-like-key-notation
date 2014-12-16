@@ -410,6 +410,54 @@ parseSequence("<x-a><s-a><ctrl-a> <++>").map(parse) // Throws error.
 ```
 
 
+Errors
+======
+
+All errors thrown by vim-like-key-notation have an `id` property, which is a
+string, and a `subject` key, which is the thing that caused the error. Some
+errors have a `context` key as well. The values of these keys are strings
+(unless otherwise stated).
+
+These are the different ids:
+
+bad\_translation
+----------------
+
+- thrown by: `stringify(event, options)`
+- context: a key in `options.translations` mapped to a bad value
+- subject: the bad value (which may be of any type)
+
+invalid\_key
+------------
+
+- thrown by: `parse(keyString)` and `normalize(keyString)`
+- subject: the invalid `keyString`
+
+unknown\_modifier
+-----------------
+
+- thrown by: `parse(keyString)` and `normalize(keyString)`
+- context: the `keyString` containing the invalid modifier
+- subject: an unknown modifier in `keyString`
+
+duplicate\_modifier
+-------------------
+
+- thrown by: `parse(keyString)` and `normalize(keyString)`
+- context: the `keyString` containing the duplicate modifier
+- subject: a duplicate modifier in `keyString`
+
+disallowed\_modifier
+--------------------
+
+- thrown by: `parse(keyString)` and `normalize(keyString)`
+- context: the `keyString` containing the disallowed modifier
+- subject: a disallowed modifier in `keyString` (in effect either `s` or `S`)
+
+This error is thrown if you try to parse a key such as `<s-a>` (explained in
+detail above).
+
+
 License
 =======
 
