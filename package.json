@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "lint": "jshint index.js test/*.js",
-    "unit": "mocha",
+    "unit": "mocha --ui tdd",
     "test": "npm run lint && npm run unit"
   },
   "devDependencies": {
