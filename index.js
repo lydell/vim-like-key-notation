@@ -127,7 +127,7 @@ function stringify(event, options) {
   } else if (options.ignoreKeyboardLayout && !/^Numpad/.test(event.code)) {
     key = codeToEnUsQwerty(event.code, shift)
   } else {
-    key = event.key
+    key = alias(event.key)
     if (key === " ") {
       key = "Space"
     }

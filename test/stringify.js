@@ -79,6 +79,27 @@ suite("stringify", function() {
       expect(keyString).to.equal("<s-enter>")
     })
 
+
+    test("aliases", function() {
+      var keyString
+
+      keyString = stringify({
+        key: "left"
+      })
+      expect(keyString).to.equal("<arrowleft>")
+
+      keyString = stringify({
+        key: "cr",
+        shiftKey: true
+      })
+      expect(keyString).to.equal("<s-enter>")
+
+      keyString = stringify({
+        key: "esc"
+      })
+      expect(keyString).to.equal("<escape>")
+    })
+
   })
 
 
