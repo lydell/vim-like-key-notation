@@ -1,4 +1,4 @@
-Overview [![Build Status](https://travis-ci.org/lydell/vim-like-key-notation.png?branch=master)](https://travis-ci.org/lydell/vim-like-key-notation)
+Overview [![Build Status](https://travis-ci.org/lydell/vim-like-key-notation.svg?branch=master)](https://travis-ci.org/lydell/vim-like-key-notation)
 ========
 
 Parse and generate vim-like key notation for modern browsers, with support for
@@ -77,8 +77,8 @@ key labeled “Esc” or “Escape” on your keyboard. “Esc” normally doesn
 a character on the screen, like “a”, “A”, “/” and “?” that we talked about
 before. Instead, it triggers other things.
 
-“Esc”, as well as many other keys such as “Enter”, “Shift” and “ArrowLeft” are
-so called non-printable keys, while “a”, “A”, “/” and “?” are printable keys.
+“Esc”, as well as many other keys such as “Tab”, “Shift” and “ArrowLeft” are so
+called non-printable keys, while “a”, “A”, “/” and “?” are printable keys.
 
 In short, printable keys are notated the way they are, while non-printable keys
 are notated by their name enclosed by `<` and `>`. A few more examples of the
@@ -174,10 +174,8 @@ Technical notes
 ===============
 
 First off, vim-like-key-notation requires that [`event.key`] and [`event.code`]
-are available on keyboard events. When this was written, only Firefox 32
-supports both of those. (Though you need to enable `event.code` by toggling the
-`dom.keyboardevent.code.enabled` pref. If no bugs are found, that won’t be
-necessary in Firefox 33.)
+are available on keyboard events. When this was written, only Firefox 33+
+supports both of those.
 
 In case you haven’t heard about those two new properties of keyboard event
 objects, here’s a little summary.
@@ -211,7 +209,7 @@ For vim-like-key-notation’s purposes, `event.key` is perfect, so that is used
 mainly. `event.key` lets you specify a keyboard shortcut as `/` (slash), and it
 will work both for an en-US QWERTY user who has a key labeled “/”, and at the
 same time for an sv-SE QWERTY user who needs to hold shift and press a key
-labeled “7” to type a “/”. It doesn’t matter that the two users press to
+labeled “7” to type a “/”. It doesn’t matter that the two users press two
 different keys and that one of them needs to hold shift—the shortcut just works
 in both cases.
 
@@ -311,6 +309,7 @@ Takes a keyboard event `event`—that has the `key` and `code` properties—and
 returns the equivalent vim-like-key-notation, in a standardized way.
 
 - All keynames are lowercase only. For example, `<space>`, not `<Space>`.
+- Aliased keynames are changed to the standard `event.key` name.
 - Modifiers, if any, are lowercase and sorted alphabetically. For example,
   `<a-c-s-esc>`, not `<A-s-c-esc>`.
 - Printable characters are never enclosed in `<` and `>` unless they need to.
