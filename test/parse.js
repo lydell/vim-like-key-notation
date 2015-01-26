@@ -20,6 +20,7 @@ suite("parse", function() {
     expect(parse("/")).to.eql({key: "/"})
     expect(parse("<")).to.eql({key: "<"})
     expect(parse(">")).to.eql({key: ">"})
+    expect(parse("1")).to.eql({key: "1"})
   })
 
 
@@ -53,6 +54,11 @@ suite("parse", function() {
         ctrlKey:  true,
         metaKey:  true,
         shiftKey: true
+      })
+
+      expect(parse("<c-1>")).to.eql({
+        key:      "1",
+        ctrlKey:  true
       })
     })
 

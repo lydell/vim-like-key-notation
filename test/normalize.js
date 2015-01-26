@@ -18,6 +18,7 @@ suite("normalize", function() {
     expect(normalize("a")).to.equal("a")
     expect(normalize("A")).to.equal("A")
     expect(normalize("/")).to.equal("/")
+    expect(normalize("1")).to.equal("1")
   })
 
 
@@ -25,10 +26,12 @@ suite("normalize", function() {
     expect(normalize("<a>")).to.equal("a")
     expect(normalize("<A>")).to.equal("A")
     expect(normalize("</>")).to.equal("/")
+    expect(normalize("<1>")).to.equal("1")
 
     expect(normalize("<c-a>")).to.equal("<c-a>")
     expect(normalize("<c-A>")).to.equal("<c-A>")
     expect(normalize("<c-/>")).to.equal("<c-/>")
+    expect(normalize("<c-1>")).to.equal("<c-1>")
 
     expect(normalize("<Escape>")).to.equal("<escape>")
     expect(normalize("<C-ESC>")).to.equal("<c-escape>")

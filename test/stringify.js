@@ -64,6 +64,22 @@ suite("stringify", function() {
     })
 
 
+    test("number", function() {
+      var keyString
+
+      keyString = stringify({
+        key: "1"
+      })
+      expect(keyString).to.equal("1")
+
+      keyString = stringify({
+        key: "1",
+        shiftKey: true
+      })
+      expect(keyString).to.equal("1")
+    })
+
+
     test("special key", function() {
       var keyString
 
@@ -162,6 +178,24 @@ suite("stringify", function() {
         ctrlKey: true
       })
       expect(keyString).to.equal("<c-->")
+    })
+
+
+    test("number", function() {
+      var keyString
+
+      keyString = stringify({
+        key: "1",
+        ctrlKey: true
+      })
+      expect(keyString).to.equal("<c-1>")
+
+      keyString = stringify({
+        key: "1",
+        shiftKey: true,
+        ctrlKey: true
+      })
+      expect(keyString).to.equal("<c-1>")
     })
 
 

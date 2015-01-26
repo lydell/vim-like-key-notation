@@ -18,6 +18,7 @@ suite("parseSequence", function() {
     expect(parseSequence("<")).to.eql(["<"])
     expect(parseSequence(">")).to.eql([">"])
     expect(parseSequence("/")).to.eql(["/"])
+    expect(parseSequence("1")).to.eql(["1"])
     expect(parseSequence(" ")).to.eql([" "])
     expect(parseSequence("\t")).to.eql(["\t"])
     expect(parseSequence("\n")).to.eql(["\n"])
@@ -25,8 +26,8 @@ suite("parseSequence", function() {
 
 
   test("sequence of characters", function() {
-    expect(parseSequence("a<>/ \t\n")).to.eql([
-      "a", "<", ">", "/", " ", "\t", "\n"
+    expect(parseSequence("a<>/1 \t\n")).to.eql([
+      "a", "<", ">", "/", "1", " ", "\t", "\n"
     ])
     expect(parseSequence(">>")).to.eql([">", ">"])
     expect(parseSequence("<2j")).to.eql(["<", "2", "j"])
@@ -37,12 +38,14 @@ suite("parseSequence", function() {
     expect(parseSequence("<a>")).to.eql(["<a>"])
     expect(parseSequence("<A>")).to.eql(["<A>"])
     expect(parseSequence("</>")).to.eql(["</>"])
+    expect(parseSequence("<1>")).to.eql(["<1>"])
     expect(parseSequence("<Escape>")).to.eql(["<Escape>"])
     expect(parseSequence("<escApe>")).to.eql(["<escApe>"])
 
     expect(parseSequence("<c-a>")).to.eql(["<c-a>"])
     expect(parseSequence("<c-A>")).to.eql(["<c-A>"])
     expect(parseSequence("<c-/>")).to.eql(["<c-/>"])
+    expect(parseSequence("<c-1>")).to.eql(["<c-1>"])
     expect(parseSequence("<c-Escape>")).to.eql(["<c-Escape>"])
     expect(parseSequence("<c-a-m-Escape>")).to.eql(["<c-a-m-Escape>"])
     expect(parseSequence("<s-K1>")).to.eql(["<s-K1>"])
