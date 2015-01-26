@@ -43,6 +43,8 @@ suite("parse", function() {
       expect(parse("<escape>")).to.eql({key: "escape"})
       expect(parse("<Escape>")).to.eql({key: "Escape"})
       expect(parse("<escApe>")).to.eql({key: "escApe"})
+      expect(parse("<f1>")).to.eql({key: "f1"})
+      expect(parse("<F1>")).to.eql({key: "F1"})
       expect(parse("<A>")).to.eql({key: "A"})
     })
 

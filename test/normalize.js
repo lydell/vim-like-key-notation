@@ -35,6 +35,7 @@ suite("normalize", function() {
 
     expect(normalize("<Escape>")).to.equal("<escape>")
     expect(normalize("<C-ESC>")).to.equal("<c-escape>")
+    expect(normalize("<F12>")).to.equal("<f12>")
   })
 
 

@@ -174,7 +174,7 @@ function parse(keyString) {
     }
   }
 
-  var match = keyString.match(/^<((?:[a-z]-)*)([a-z]+|[^<>\s])>$/i)
+  var match = keyString.match(/^<((?:[a-z]-)*)([a-z\d]+|[^<>\s])>$/i)
   if (!match) {
     throw error({
       id:      "invalid_key",
