@@ -124,7 +124,10 @@ function stringify(event, options) {
   var code = event.code
   if (options.translations && code in options.translations) {
     key = alias(translate(options.translations, code, shift))
-  } else if (options.ignoreKeyboardLayout && !/^Numpad/.test(code)) {
+  } else if (
+    (options.ignoreKeyboardLayout && !/^Numpad/.test(code)) ||
+    event.key === "Unidentified"
+  ) {
     key = codeToEnUsQwerty(code, shift)
   } else {
     key = alias(event.key)

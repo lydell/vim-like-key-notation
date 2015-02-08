@@ -119,6 +119,16 @@ suite("stringify", function() {
   })
 
 
+  test("fall back to event.code", function() {
+    var keyString = stringify({
+      key: "Unidentified",
+      code: "Tab",
+      shiftKey: true
+    })
+    expect(keyString).to.equal("<s-tab>")
+  })
+
+
   suite("modifiers", function() {
 
     test("letter", function() {
@@ -686,7 +696,8 @@ suite("stringify", function() {
       var keyString
 
       keyString = stringify({
-        key: "Unidentified"
+        key: "Unidentified",
+        code: ""
       })
       expect(keyString).to.equal("")
 
