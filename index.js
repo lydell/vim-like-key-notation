@@ -120,17 +120,17 @@ function stringify(event, options) {
   var meta  = event.metaKey
   var shift = event.shiftKey
 
-  var key
-  var code = event.code
+  var key  = event.key  || "Unidentified"
+  var code = event.code || ""
   if (options.translations && code in options.translations) {
     key = alias(translate(options.translations, code, shift))
   } else if (
     (options.ignoreKeyboardLayout && !/^Numpad/.test(code)) ||
-    event.key === "Unidentified"
+    key === "Unidentified"
   ) {
     key = codeToEnUsQwerty(code, shift)
   } else {
-    key = alias(event.key)
+    key = alias(key)
     if (key === " ") {
       key = "Space"
     }

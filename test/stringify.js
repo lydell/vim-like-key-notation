@@ -695,9 +695,11 @@ suite("stringify", function() {
     test("unrecognized keys", function() {
       var keyString
 
+      keyString = stringify({})
+      expect(keyString).to.equal("")
+
       keyString = stringify({
         key: "Unidentified",
-        code: ""
       })
       expect(keyString).to.equal("")
 
