@@ -1,3 +1,9 @@
+### Version 0.1.4 (2015-02-09) ###
+
+- Improved: `stringify` is now more robust by no longer crashing on missing
+  `event.key` or `event.code`.
+
+
 ### Version 0.1.3 (2015-02-08) ###
 
 - Improved: If `event.key === "Unidentified"`, fall back on `event.code`. It
