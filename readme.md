@@ -70,26 +70,28 @@ that an “a” should be typed, and then a “b” (both lowercase). `Esc` mean
 an “E” (uppercase), followed by an “s” (lowercase), followed by a “c”
 (lowercase) should be typed.
 
-So how do you express that the key “Esc” (or “Escape”) should be sent?
+So how do you express the “Esc” (or “Escape”) key?
 
-`<Esc>` means that the “Esc” key should be sent, which usually means hitting the
-key labeled “Esc” or “Escape” on your keyboard. “Esc” normally doesn’t result in
-a character on the screen, like “a”, “A”, “/” and “?” that we talked about
+`<Esc>` means that the “Esc” key should be typed, which usually means hitting
+the key labeled “Esc” or “Escape” on your keyboard. “Esc” normally doesn’t
+result in a character on the screen, like “a”, “A”, “/” and “?” mentioned
 before. Instead, it triggers other things.
 
-“Esc”, as well as many other keys such as “Tab”, “Shift” and “ArrowLeft” are so
-called non-printable keys, while “a”, “A”, “/” and “?” are printable keys.
+“Esc”, as well as many other keys such as “Backspace”, “Shift” and “ArrowLeft”
+are so called non-printable keys, while “a”, “A”, “/” and “?” are printable
+keys.
 
 In short, printable keys are notated the way they are, while non-printable keys
-are notated by their name enclosed by `<` and `>`. A few more examples of the
-latter are `<Backspace>`, `<Shift>` and `<ArrowLeft>`.
+are notated by their name enclosed by `<` and `>`. In other words, the
+non-printable keys in the previous paragraph would be notated as `<Backspace>`,
+`<Shift>` and `<ArrowLeft>`.
 
 The names of non-printable keys are case-insensitive, so you can say
 `<backspace>`, `<SHIFT>` and `<arrowLEFT>` as well.
 
-There is a [list of the names for non-printable keys][keylist] available on MDN.
-Beyond those, there are a couple of aliases, mostly to support names used by
-vim. After all, this module is called vim-like-key-notation.
+There is a [list of the names for non-printable keys][keylist] available on
+[MDN]. Beyond those, there are a couple of aliases, mostly to support names
+used by vim. After all, this module is called vim-like-key-notation.
 
 Just like printable keys, you can type sequences of non-printable keys as well.
 `<Esc><Backspace>` means first hitting the “Esc” key and then the “Backspace”
@@ -100,17 +102,19 @@ But if `<` and `>` are used to denote non-printable keys, how do you express the
 `<` and `>` keys themselves? `<` and `>` will do fine. Just watch out if you
 want to use both `<` and `>` in a sequence. `<>bs`, `><bs` and `bs<>` all mean
 that the characters “<”, “>”, “b” and “s” should be typed in different orders,
-while `<bs>` means that the “Backspace” key should be pressed. If that wasn’t
-intended, there is an alternate way of expressing the `<` and `>` keys: `<lt>`
-and `<gt>`, respectively (or you may use their aliases `<less>` and `greater`).
-While they look like non-printable keys named “lt” and “gt”, they actually
-represent the printable keys `<` and `>`. This allows us to write `<lt>bs>`,
-`<bs<gt>` or `<lt>bs<gt>` to escape the meaning of “Backslash”.
+while `<bs>` means that the “Backspace” key should be pressed (“bs” is an alias
+for “Backspace”). To escape that meaning, there is an alternate way of
+expressing the `<` and `>` keys: `<lt>` and `<gt>`, respectively. (You may use
+their aliases `<less>` and `greater`). While they look like non-printable keys
+named “lt” and “gt”, they actually represent the printable keys `<` and `>`.
+This allows to write `<lt>bs>`, `<bs<gt>` or `<lt>bs<gt>` to escape the meaning
+of “Backslash”.
 
 While talking about notation that looks like non-printable keys, there is yet
 one: Space. It is denoted as `<Space>`, not ` `. That’s because ` ` isn’t
-that readable. It is the same way for tabs and newlines; they’re called `<Tab>`
-and `<Enter>`, respectively.
+very readable. It is the same way for tabs and newlines; they’re called `<Tab>`
+and `<Enter>`, respectively. (All three of those keys can actually be considered
+to be in a middle-ground between printable and non-printable keys.)
 
 Actually, you may put any printable character inside `<` and `>` (other than `<`
 and `>`). In other words `<a>`, `<A>`, `</>` and `<?>` are equivalent to `a`,
@@ -118,64 +122,111 @@ and `>`). In other words `<a>`, `<A>`, `</>` and `<?>` are equivalent to `a`,
 that—_shorter forms._
 
 There are a few special keys of the keyboard called modifiers, that can be held
-while pressing another key. That other key is then modified. It carries along a
-list of all held down modifier keys when it was pressed. The pressed key then
-usually gets different behavior. vim-like-key-notation supports the alt, ctrl
-and meta modifiers.
+while pressing another key. That other key is then modified, which makes it
+carry along a list of all modifier keys that were held down when the key in
+question was pressed. The pressed key then usually gets different behavior.
+vim-like-key-notation supports the alt, ctrl and meta modifiers.
 
 `<c-a>` means that an “a” (lowercase) should be typed while the ctrl modifier is
 held. `<m-a>` means the same thing, but this time the meta modifier should be
-held instead. Lastly, in `<a-a>` we’re talking about the alt modifier.
+held instead. As yet an example, `<a-a>` concerns the alt modifier.
 
 You may specify more than one modifier. `<c-a-m-a>` means that an “a”
 (lowercase) should be typed while all three of the ctrl, alt and meta modifiers
-are held. In other words, to specify a modifier you put the first letter of its
-name followed by a `-` after the `<`.
+are held. In other words, to specify a modifier, make sure that the key is
+wrapped with `<` and `>` and put the first letter of the name of the modifier
+followed by a `-` after the `<`. (To modify `<` and `>` use `<c-lt>` and
+`<m-a-gt>`, for example.)
 
 The order of the modifiers does not matter. Neither does the case of the
-modifier letters. `<c-a-m-a>` and `<M-c-A-a>` are both equivalent.
-
-Modifiers can of course be used with non-printable keys as well. `<c-Esc>` works
-as expected. To modify `<` and `>` you can use `<c-lt>` and `<m-a-gt>`, for
-example.
+modifier letters. `<c-a-m-a>` and `<M-c-A-a>` are equivalent.
 
 What about shift? Isn’t that modifier, too? It is actually a bit of an odd bird.
-It’s both a modifier and a layer switch.
+It’s both a modifier and a layer switch. (The other modifiers can technically
+work like shift does as well, but that is less common.)
 
-For printable keys, holding shift makes the key output something entirely
-different. For example, holding shift while pressing the key labeled “A” usually
-outputs an “A”, while the key would have produced an “a” if the shift key hadn’t
-been held. Holding shift while pressing the key labeled with a “7” might produce
-an “&” or a “/” (depending on the keyboard layout). In these cases shift enables
-a different layer of your keyboard, making keys do other things than they do
+Holding shift while pressing a printable key usually makes the key output a
+different character than it normally would. For example, holding shift while
+pressing the key labeled “A” outputs an “A” in the majority of keyboard layouts,
+while the key would have produced an “a” if the shift key hadn’t been held.
+Holding shift while pressing the key labeled with a “7” might produce an “&” or
+a “/” (depending on the keyboard layout). In these cases shift enables a
+different layer of your keyboard, making keys do other things than they do
 otherwise.
 
 For non-printable keys, holding shift usually makes no difference. Instead,
 shift works as modifier.
 
 Therefore, it is allowed to specify shift as a modifier for non-printable
-keys—but only for them. `<s-Esc>` means that the “Esc” key should be pressed
-while shift is held. `<s-a>` is an error. Write `<A>` or `A`, or whatever is
-produced by holding shift and pressing the key that otherwise would output an
-“a”. Likewise for `<s-/>`. It is invalid. Write `?` or whatever instead.
+keys—but only for them.
 
-There are a few notable exceptions to the above. `<Space>`, `<Tab>` and
-`<Enter>` are all allowed to have the shift modifier specified.
+`<s-Esc>` means that the “Esc” key should be pressed while shift is held.
+
+(In some systems it is technically _possible_ to make shift work as a layer
+switch even on non-printable keys, but in practice nobody does that.)
+
+`<s-a>` is an error. Write `<A>` or `A` instead (or whatever is produced by
+holding shift and pressing the key that otherwise would output an “a”). Likewise
+for `<s-/>`. It is invalid. For the en-US QWERTY layout, use `?`.
+
+There are a few printable keys that are exceptions to the above rule. `<Space>`,
+`<Tab>` and `<Enter>` are all allowed to have the shift modifier specified.
+(Again, they are a middle-ground between printable and non-printable keys).
 
 The part about shift is important to remember. In many programs you may see
 instructions to press something like ctrl+shift+a. Don’t try to recreate such a
 shortcut in vim-like-key-notation by writing `<c-s-a>`. That’s an error. The
 correct way is most likely `<c-A>`.
 
+Why have this restriction on the shift “modifier”? The technical answer is that
+browsers do not have access to the current keyboard layout. While it is
+extremely likely that “`<s-a>`” means `A`, it is impossible to know if “`<s-/>`”
+means `?`, some other character or if the shift modifier is even _required_ to
+type a `/` (such as when `/` is typed by pressing “`<s-7>`”).
+
+This “untraditional” handling of shift might seem odd, but it depends on your
+point of view. vim-like keys are _different._ In most other circumstances,
+pressing “a” and “A” means the same thing: Hitting the key labeled “A”, without
+holding shift. But not in vim. There, case matters. “a” means lowercase only,
+and “A” uppercase only. vim does not care whether or not you need to press shift
+to produce any of those characters. Moreover, in most other circumstances,
+ctrl+shift+a and CTRL+SHIFT+A means the same thing (even though the former uses
+a lowercase “a” while the latter uses an uppercase “A”). Since unmodified “a”
+and “A” are different in vim, it is the most consistent if `<c-a>` and `<c-A>`
+are different too. By distinguishing between “a” and “A” specifying shift is
+redundant—even ambigous: For example, try to explain the differences between
+`<c-4>`, `<c-$>`, `<c-s-4>` and `<c-s-$>` in the en-US QWERTY layout. (Even if
+the browser would have access to the current keyboard layout it is difficult to
+consistently define them all!)
+
+An alternate rule for shift could be to always require it to be explicitly
+specified in the notation. For example, `<c-$>` would not be possible to enter
+using the en-US keyboard layout (because in that layout it is impossible to type
+a `$` without holding shift), but `<c-s-$>` would be. However, this poses a
+couple of problems. First off, to be consistent you’d have to write `<s-A>`
+instead of `A`. Secondly, it would be very surprising that `<s-a>` would not
+work as you’d probably expect (`<s-A>` would be the correct notation). Thirdly,
+it complicates sharing shortcuts with other people. For example, the standard
+keyboard shortcut for searching in vim is `/`. Let’s say that you’ve created an
+alternate search mode. To make the shortcut easy to remember, you’ve bound it to
+`<c-/>`. If you try to share that setup with a user of the sv-SE QWERTY layout,
+that person would not be able to trigger your alternate search mode. In that
+layout the shortcut would be `<c-s-/>`.
+
+That’s the reason the shift “modifier” is handled the way it is. Complicated?
+Nah. You just might to get used to it.
+
 [keylist]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent.key#Key_values
+[MDN]: https://developer.mozilla.org/
 
 
 Technical notes
 ===============
 
-First off, vim-like-key-notation requires that [`event.key`] and [`event.code`]
-are available on keyboard events. When this was written, only Firefox 33+
-supports both of those.
+vim-like-key-notation requires that [`event.key`] and [`event.code`] are
+available on keyboard events. When this was written, only Firefox 32+ supports
+both of those. (You need to enable `event.code` by toggling the
+`dom.keyboardevent.code.enabled` pref, though).
 
 In case you haven’t heard about those two new properties of keyboard event
 objects, here’s a little summary.
@@ -183,18 +234,16 @@ objects, here’s a little summary.
 `event.key` is the character that would be typed by the keypress (such as “a”,
 “A”, “/” and “?”), or a name of the key that would be sent if the key is
 non-printable (such as “Escape”, “ArrowLeft” and “Shift”). This property takes
-your current keyboard layout in account, so the same physical key on your
-keyboard might give totally different `event.key` values if you switch layouts.
-Shift is also taken into account, so the same physical key on your keyboard
-might give totally different `event.key` values if you do or do not hold shift
-as well.
+your current keyboard layout as well as shift in account, so the same physical
+key on your keyboard might give a different `event.key` value if you switch
+layouts or depending on if you hold shift or not.
 
 `event.code` is a unique name for each key of your keyboard, that stays the same
 regardless of your current layout, and regardless of whether shift is held or
 not. The names come from the standard en-US QWERTY layout, such as “Escape”,
 “ShiftLeft”, “KeyA” and “Digit1”. If the standard en-US QWERTY layout is used,
-it is easy to guess what those keys do. However, we cannot know that. If the
-AZERTY layout is used, “KeyA” will produce a “q”, not an “a”!
+it is easy to guess what those keys do. However, we cannot know that for sure.
+Fo example, if the AZERTY layout is used, “KeyA” will produce a “q”, not an “a”!
 
 Both `event.key` and `event.code` are the same in all three keyboard
 events—`keydown`, `keypress` and `keyup`. Best of all, the values are
@@ -210,30 +259,30 @@ mainly. `event.key` lets you specify a keyboard shortcut as `/` (slash), and it
 will work both for an en-US QWERTY user who has a key labeled “/”, and at the
 same time for an sv-SE QWERTY user who needs to hold shift and press a key
 labeled “7” to type a “/”. It doesn’t matter that the two users press two
-different keys and that one of them needs to hold shift—the shortcut just works
-in both cases.
+different keys and that one of them needs to hold shift—it just works in both
+cases.
 
 However, many people use more than one keyboard layout. This is common when you
-need to both type using the latin alphabet as well as the cyrillc or the greek
+need to type both using the latin alphabet as well as the cyrillc or the greek
 alphabet, or whatever. As far as I know, the most common setup is the usage of
 the en-US QWERTY layout in combination with a non-latin layout. On most cyrillic
 keyboards both the en-US QWERTY characters as well as the local ones are printed
 on the keys.
 
-The problem arises when we have a shortcut such as `a` and the user currently
+The problem arises when there’s a shortcut such as `a` and the user currently
 happens to not use the en-US QWERTY layout. Even if he presses the key labeled
 “A”, the `a` shortcut won’t trigger, because the character that would be
 typed—and `event.key`—is a Cyrillic character, not “a”!
 
-Another problem is that keys that are common between layouts, such as `.`, might
-be at different locations. While the user might not have any problems with the
-`.` key to be in different locations while typing in different languages, it
+Another problem is that characters that are common between layouts, such as `.`,
+might be at different locations. While the user might not have any problems with
+the `.` key to be in different locations while typing in different languages, it
 most certainly will be a problem for keyboard shortcuts. Using shortcuts isn’t
-typing. After a while it is mostly muscle memory, which means that moving them
+typing. After a while it is mostly muscle memory, which means that moving things
 around is a very bad idea.
 
-There for the vim-like-key-notation allows you to ignore the current layout.
-Instead the en-US QWERTY layout will be assumed. For this purpose, `event.code`
+Therefore vim-like-key-notation allows you to ignore the current layout.
+Instead, the en-US QWERTY layout will be assumed. For this purpose, `event.code`
 is perfect.
 
 If the current layout is ignored, it doesn’t matter which layout the user
@@ -242,15 +291,15 @@ currently happens to use. The keyboard shortcuts stay on the same keys anyway.
 Then why not always use `event.code`? Because users of only one keyboard layout
 want the keyboard shortcuts to just work. They do not want to learn the en-US
 QWERTY layout by heart just to be able to trigger keyboard shortcuts. Using
-`event.code` in this case means that the user never can read documentation
+`event.code` in this case means that the user can never read documentation
 telling which keys to press without first having to translate those keys to
 their own keyboard layout. For example, an instruction might tell the user to
 type “/”, but might in fact mean that he should press the key labeled “-” on his
-keyboard. (People who only use the en-US QWERTY layout are of course an
-exception—but the world is far larger than that.)
+keyboard. (People who only use the en-US QWERTY layout are an exception of
+course—but the world is far larger than that.)
 
-So if the option to ignore the current keyboard layout is enabled, `event.code`
-is translated into more `event.key`-like values, taking shift into account. For
+If the option to ignore the current keyboard layout is enabled, `event.code` is
+translated into more `event.key`-like values, taking shift into account. For
 example, `KeyA` is turned into `a` or `A`. `Digit1` is turned into `1` or `!`.
 
 Note that while the current state of shift is available, the current state of
@@ -334,7 +383,7 @@ returns the equivalent vim-like-key-notation, in a standardized way.
   The keys are `event.code` strings that should be translated.
 
   The values are either strings or arrays of two strings. The strings are
-  `event.key`-like values that the keys should be translated into. If only a
+  `event.key`-like values that the keys should be translated into. If only one
   string is provided, the key is always translated into that string. If an array
   is provided, the first value of it is used when shift is not held, and the
   other value when shift _is_ held.
@@ -374,8 +423,8 @@ object. Throws errors for invalid `keyString`s.
 The `key` property will contain the key in question, with casing exactly like in
 the input.
 
-The `altKey`, `ctrlKey`, `metaKey` and `shiftKey` keys will be set to `true` the
-corresponding modifiers are present.
+The `altKey`, `ctrlKey`, `metaKey` and `shiftKey` properties will be set to
+`true` if the corresponding modifiers are present.
 
 
 ```js
@@ -405,7 +454,7 @@ parseSequence("<<c-w>>") // ["<", "<c-w>", ">"]
 
 // Invalid keys.
 parseSequence("<x-a><s-a><ctrl-a> <++>") // ["<x-a>", "<s-a>", "<ctrl-a>", " ", "<++>"]
-parseSequence("<x-a><s-a><ctrl-a> <++>").map(parse) // Throws error.
+parseSequence("<x-a><s-a><ctrl-a> <++>").map(parse) // Throws an error.
 ```
 
 
@@ -413,9 +462,9 @@ Errors
 ======
 
 All errors thrown by vim-like-key-notation have an `id` property, which is a
-string, and a `subject` key, which is the thing that caused the error. Some
-errors have a `context` key as well. The values of these keys are strings
-(unless otherwise stated).
+string, and a `subject` key, which is what caused the error. Some errors have a
+`context` key as well. The values of these keys are strings (unless otherwise
+stated).
 
 These are the different ids:
 
@@ -454,7 +503,7 @@ disallowed\_modifier
 - subject: a disallowed modifier in `keyString` (in effect either `s` or `S`)
 
 This error is thrown if you try to parse a key such as `<s-a>` (explained in
-detail above).
+detail the notation section).
 
 
 License
