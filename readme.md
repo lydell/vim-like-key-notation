@@ -224,9 +224,8 @@ Technical notes
 ===============
 
 vim-like-key-notation requires that [`event.key`] and [`event.code`] are
-available on keyboard events. When this was written, only Firefox 32+ supports
-both of those. (You need to enable `event.code` by toggling the
-`dom.keyboardevent.code.enabled` pref, though).
+available on keyboard events. When this was written, only Firefox 38+ supports
+both of those by default.
 
 In case you haven’t heard about those two new properties of keyboard event
 objects, here’s a little summary.
