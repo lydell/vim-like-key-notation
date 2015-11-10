@@ -26,6 +26,10 @@ document.addEventListener("keydown", function(event) {
 }, true)
 ```
 
+vim-like-key-notation is used by [VimFx].
+
+[VimFx]: https://github.com/akhodakivskiy/VimFx
+
 
 Installation
 ============
@@ -35,7 +39,6 @@ Installation
 ```js
 var notation = require("vim-like-key-notation")
 ```
-
 
 
 The notation
