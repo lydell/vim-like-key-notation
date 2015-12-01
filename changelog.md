@@ -1,3 +1,9 @@
+### Version 0.1.5 (2015-12-01) ###
+
+- Fixed: Dead keys are now handled correctly (ignoring them). This seems to only
+  have been noticeable on Windows.
+
+
 ### Version 0.1.4 (2015-02-09) ###
 
 - Improved: `stringify` is now more robust by no longer crashing on missing
