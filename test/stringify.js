@@ -704,6 +704,11 @@ suite("stringify", function() {
       expect(keyString).to.equal("")
 
       keyString = stringify({
+        key: "Dead",
+      })
+      expect(keyString).to.equal("")
+
+      keyString = stringify({
         code: ""
       }, {ignoreKeyboardLayout: true})
       expect(keyString).to.equal("")

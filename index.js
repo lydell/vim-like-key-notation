@@ -58,6 +58,7 @@ var specialCases = {
   ">": "gt"
 }
 
+var ignored = /^($|Unidentified$|Dead$|Alt|Control|Hyper|Meta|Shift|Super|OS)/
 
 
 function alias(key) {
@@ -136,7 +137,7 @@ function stringify(event, options) {
     }
   }
 
-  if (/^($|Unidentified$|Alt|Control|Hyper|Meta|Shift|Super|OS)/.test(key)) {
+  if (ignored.test(key)) {
     return ""
   }
 
