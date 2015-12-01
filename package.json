@@ -20,8 +20,8 @@
     "test": "npm run lint && npm run unit"
   },
   "devDependencies": {
-    "mocha": "^1.21.4",
-    "jshint": "^2.4.4",
-    "chai": "^1.9.2"
+    "mocha": "^2.3.4",
+    "jshint": "^2.9.1-rc1",
+    "chai": "^3.4.1"
   }
 }
