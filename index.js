@@ -147,15 +147,19 @@ function stringify(event, options) {
     key = key.toLowerCase()
   }
 
-  if (key in specialCases) {
-    key = specialCases[key]
-  }
-
   var modifiers = ""
   if (alt)   modifiers += "a-"
   if (ctrl)  modifiers += "c-"
   if (meta)  modifiers += "m-"
   if (shift) modifiers += "s-"
+
+  if (options.ignoreCtrlAlt && modifiers === "a-c-" && key.length === 1) {
+    modifiers = ""
+  }
+
+  if (key in specialCases) {
+    key = specialCases[key]
+  }
 
   if (modifiers || key.length > 1) {
     return "<" + modifiers + key + ">"

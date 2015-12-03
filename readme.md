@@ -375,6 +375,21 @@ returns the equivalent vim-like-key-notation, in a standardized way.
 
 `options`: (See [Technical Notes](#technical-notes) for more information).
 
+- `ignoreCtrlAlt`: `Boolean`.
+
+  If enabled, ignores ctrl+alt for printable keys. `<a-c-$>` becomes `$` and
+  `<a-c-A>` becomes `A`, while `<a-c-enter>` stays the same.
+
+  This option is suitable on Windows, which treats [AltGr as
+  ctrl+alt][wikipedia-altgr]. For example, if a user of the sv-SE layout on
+  Windows holds AltGr and presses the key labeled `4`, in order to produce a
+  `$`, the result would be `<a-c-$>` without this option, making it impossible
+  to trigger a keyboard shortcut containing `$`. _With_ this option the result
+  is `$`, as expected (and as on GNU/Linux). On the other hand it won’t be
+  possible to trigger keyboard shortcuts such as `<a-c-a>`, but ctrl+alt
+  keyboard shortcuts are [discouraged on Windows][wikipedia-altgr] anyway
+  because of this reason.
+
 - `ignoreKeyboardLayout`: `Boolean`.
 
   If enabled, ignores the current keyboard layout and assumes that the en-US
@@ -415,6 +430,8 @@ returns the equivalent vim-like-key-notation, in a standardized way.
     "Numpad9": "K9"
   }})
   ```
+
+[wikipedia-altgr]: https://en.wikipedia.org/wiki/AltGr_key#Control_.2B_Alt_as_a_substitute
 
 `parse(keyString)`
 ------------------

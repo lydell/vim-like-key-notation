@@ -329,6 +329,114 @@ suite("stringify", function() {
   })
 
 
+  suite("ignoreCtrlAlt", function() {
+
+    test("simple", function() {
+      var keyString
+
+      keyString = stringify({
+        key: "$",
+        ctrlKey: true,
+        altKey: true
+      }, {ignoreCtrlAlt: false})
+      expect(keyString).to.equal("<a-c-$>")
+
+      keyString = stringify({
+        key: "$",
+        ctrlKey: true,
+        altKey: true
+      }, {ignoreCtrlAlt: true})
+      expect(keyString).to.equal("$")
+    })
+
+
+    test("shift", function() {
+      var keyString
+
+      keyString = stringify({
+        key: "$",
+        ctrlKey: true,
+        altKey: true,
+        shiftKey: true
+      }, {ignoreCtrlAlt: true})
+      expect(keyString).to.equal("$")
+
+      keyString = stringify({
+        key: "A",
+        ctrlKey: true,
+        altKey: true,
+        shiftKey: true
+      }, {ignoreCtrlAlt: true})
+      expect(keyString).to.equal("A")
+    })
+
+
+    test("< and >", function() {
+      var keyString
+
+      keyString = stringify({
+        key: "<",
+        ctrlKey: true,
+        altKey: true
+      }, {ignoreCtrlAlt: true})
+      expect(keyString).to.equal("<lt>")
+
+      keyString = stringify({
+        key: ">",
+        ctrlKey: true,
+        altKey: true
+      }, {ignoreCtrlAlt: true})
+      expect(keyString).to.equal("<gt>")
+    })
+
+
+    test("special key", function() {
+      var keyString
+
+      keyString = stringify({
+        key: "Enter",
+        ctrlKey: true,
+        altKey: true
+      }, {ignoreCtrlAlt: true})
+      expect(keyString).to.equal("<a-c-enter>")
+
+      keyString = stringify({
+        key: "Enter",
+        ctrlKey: true,
+        altKey: true,
+        shiftKey: true
+      }, {ignoreCtrlAlt: true})
+      expect(keyString).to.equal("<a-c-s-enter>")
+    })
+
+
+    test("missing or extra modifiers", function() {
+      var keyString
+
+      keyString = stringify({
+        key: "a",
+        ctrlKey: true
+      }, {ignoreCtrlAlt: true})
+      expect(keyString).to.equal("<c-a>")
+
+      keyString = stringify({
+        key: "a",
+        altKey: true
+      }, {ignoreCtrlAlt: true})
+      expect(keyString).to.equal("<a-a>")
+
+      keyString = stringify({
+        key: "a",
+        ctrlKey: true,
+        altKey: true,
+        metaKey: true
+      }, {ignoreCtrlAlt: true})
+      expect(keyString).to.equal("<a-c-m-a>")
+    })
+
+  })
+
+
   suite("ignoreKeyboardLayout", function() {
 
     test("letter", function() {
