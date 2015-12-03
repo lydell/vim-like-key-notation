@@ -1,3 +1,9 @@
+### Version 0.2.0 (2015-12-03) ###
+
+- Added: The `ignoreCtrlAlt` option. This is useful on Windows when using
+  keyboard layouts with an AltGr key.
+
+
 ### Version 0.1.5 (2015-12-01) ###
 
 - Fixed: Dead keys are now handled correctly (ignoring them). This seems to only
