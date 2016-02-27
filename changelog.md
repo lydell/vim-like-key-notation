@@ -1,3 +1,8 @@
+### Version 1.0.0 (2016-02-27) ###
+
+- No changes whatsoever. Just marking as 1.0.0.
+
+
 ### Version 0.2.0 (2015-12-03) ###
 
 - Added: The `ignoreCtrlAlt` option. This is useful on Windows when using
