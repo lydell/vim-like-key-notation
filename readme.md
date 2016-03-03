@@ -4,7 +4,7 @@ Overview [![Build Status](https://travis-ci.org/lydell/vim-like-key-notation.svg
 Parse and generate vim-like key notation for modern browsers, with support for
 different keyboard layouts especially in mind.
 
-A sneak-peak:
+A sneak peek:
 
 ```js
 var notation = require("vim-like-key-notation")
