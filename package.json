@@ -1,6 +1,6 @@
 {
   "name": "vim-like-key-notation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Simon Lydell",
   "license": "MIT",
   "description": "Parse and generate vim-like key notation for modern browsers.",

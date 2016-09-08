@@ -1,3 +1,8 @@
+### Version 1.0.1 (2016-09-08) ###
+
+- Improved: Limited npm package contents for a smaller download.
+
+
 ### Version 1.0.0 (2016-02-27) ###
 
 - No changes whatsoever. Just marking as 1.0.0.
