@@ -6,6 +6,9 @@
   "description": "Parse and generate vim-like key notation for modern browsers.",
   "main": "index.js",
   "repository": "lydell/vim-like-key-notation",
+  "files": [
+    "index.js"
+  ],
   "keywords": [
     "vim",
     "key",
