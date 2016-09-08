@@ -19,7 +19,7 @@ document.addEventListener("keydown", function(event) {
     runCommand()
   }
 
-  // With vim-like key notation.
+  // With vim-like-key-notation.
   if (notation.stringify(event) === "<c-s-escape>") {
     runCommand()
   }
