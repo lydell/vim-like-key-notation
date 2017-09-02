@@ -1,6 +1,3 @@
-// Copyright 2014 Simon Lydell
-// X11 (“MIT”) Licensed. (See LICENSE.)
-
 var expect = require("chai").expect
 
 var parseSequence = require("../").parseSequence

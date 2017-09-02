@@ -1,6 +1,3 @@
-// Copyright 2014, 2015 Simon Lydell
-// X11 (“MIT”) Licensed. (See LICENSE.)
-
 var aliases = {
   "left":    "ArrowLeft",
   "right":   "ArrowRight",

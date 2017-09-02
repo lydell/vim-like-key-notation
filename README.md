@@ -528,4 +528,4 @@ detail the notation section).
 License
 =======
 
-[The X11 (“MIT”) License](LICENSE).
+[MIT](LICENSE).
