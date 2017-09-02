@@ -228,7 +228,7 @@ Technical notes
 
 vim-like-key-notation requires that [`event.key`] and [`event.code`] are
 available on keyboard events. When this was written, only Firefox 38+ supports
-both of those by default.
+both of those by default. (Edit: As of 2017, Chrome 51+ also supports both.)
 
 In case you haven’t heard about those two new properties of keyboard event
 objects, here’s a little summary.
@@ -308,6 +308,12 @@ Note that while the current state of shift is available, the current state of
 capslock isn’t, which means that capslock cannot be taken into account. Instead
 it is assumed to always be off.
 
+(Edit: Two years later, it turns out that it actually _is_ possible to detect
+capslock, by using [`event.getModifierState`]. The correct shift state can then
+be detected using `var shift = event.shiftKey !==
+event.getModifierState("CapsLock")`, but I haven’t bothered updating
+vim-like-key-notation with this.)
+
 The numpad is an exception. `event.key` is used there even if the current layout
 is set to be ignored. That’s because it is not possible to correctly emulate it.
 
@@ -318,6 +324,11 @@ layout in this case, in order not to break the numpad. This is especially
 important on laptops, where `<Home>`, `<End>`, `<PageUp>` and `<PageDown>`
 usually only exist there. The keypad usually doesn’t change between layouts
 anyway—at least not enough to warrant drastic changes to it.
+
+(Edit: Just like capslock (mentioned above), it actually _is_ possible to detect
+numlock, by using `event.getModifierState("NumLock")`. However, I haven’t
+researched whether that’s enough to emulate the numpad correctly, or whether it
+is worth the trouble.)
 
 Finally, what about those who use several layouts, but not the en-US QWERTY
 layout? For example, it could be someone using the sv-SE QWERTY layout as well
@@ -348,6 +359,7 @@ QWERTY is used (depending on if the current layout is set to be ignored).
 
 [`event.key`]:  https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent.key
 [`event.code`]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent.code
+[`event.getModifierState`]: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState
 
 
 API
